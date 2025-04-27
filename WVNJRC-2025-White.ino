@@ -12,10 +12,14 @@ void setup()
   // put your setup code here, to run once:
   prizm.PrizmBegin();
   Serial.being(115200);
+
+  BatteryCheck(); // ensure battery is properly charged before operation
+  
 }
 
 void loop()
 {
+
   ps4.getPS4(); // poll teleop for ps4 button inputs
 
   DriveSystem(); // primary drive controls
