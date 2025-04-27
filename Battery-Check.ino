@@ -2,7 +2,7 @@
     Ensure the battery is suitably charged before operation
 */
 
-BatteryCheck()
+void BatteryCheck()
 {
     /*
     pseudo code:
