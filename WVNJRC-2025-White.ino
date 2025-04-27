@@ -1,13 +1,21 @@
+// TETRIX libraries
 #include <PRIZM.h>
+#include <TELEOP.h>
 PRIZM prizm;
-#include "drive.ino"
+PS4 ps4;
 
-void setup() {
+// ino files are automatically included and their members prototyped (forward declared)
+// https://arduino.github.io/arduino-cli/0.19/sketch-build-process/
+
+void setup()
+{
   // put your setup code here, to run once:
   prizm.PrizmBegin();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  DriveSystem();
+void loop()
+{
+  ps4.getPS4(); // poll teleop for ps4 button inputs
+
+  DriveSystem(); // primary drive controls
 }
