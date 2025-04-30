@@ -7,16 +7,14 @@ PS4 ps4;
 // ino files are automatically included and their members prototyped (forward declared)
 // https://arduino.github.io/arduino-cli/0.19/sketch-build-process/
 
-void setup()
-{
+void setup() {
   // put your setup code here, to run once:
   prizm.PrizmBegin();
   Serial.begin(115200);
 }
 
-void loop()
-{
-  ps4.getPS4(); // poll teleop for ps4 button inputs
-
-  DriveSystem(); // primary drive controls
+void loop() {
+  ps4.getPS4();  // poll teleop for ps4 button inputs
+  Connectivity();
+  DriveSystem();  // primary drive controls
 }
