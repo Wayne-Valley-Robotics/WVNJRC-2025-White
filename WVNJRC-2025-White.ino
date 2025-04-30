@@ -2,6 +2,7 @@
 #include <PRIZM.h>
 #include <TELEOP.h>
 PRIZM prizm;
+EXPANSION exc;
 PS4 ps4;
 
 // ino files are automatically included and their members prototyped (forward declared)
