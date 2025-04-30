@@ -11,10 +11,10 @@ void BatteryCheck() {
     */
   int batteryVoltage = prizm.readBatteryVoltage();
 
-  if (batteryVoltage < 900) {
-    prizm.PrizmEnd();
-  }
   if (batteryVoltage <= 1100) {
     prizm.setRedLED(HIGH);
+  }
+  if (batteryVoltage < 900) {
+    prizm.PrizmEnd();
   }
 }
