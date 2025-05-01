@@ -11,6 +11,8 @@ void setup() {
   // put your setup code here, to run once:
   prizm.PrizmBegin();
   Serial.begin(115200);
+
+  BatteryCheck();  // ensure battery is properly charged before operation
 }
 
 void loop() {
