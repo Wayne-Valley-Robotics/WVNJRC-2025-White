@@ -3,7 +3,7 @@
 */
 
 const int TORQUENADO_MAX_SPEED = 630; // max speed for torquenado
-const int MOTORS_MAX_SPEED = 720;  // max physical speed, effectively disabling torquenado
+const int MOTORS_MAX_SPEED = 720;     // max physical speed, effectively disabling torquenado
 
 void DriveSystem()
 {
