@@ -16,9 +16,8 @@ void Connectivity() {
 void Range() {
   ps4.inRange;
   if (!ps4.inRange) {
-   ps4.setRumble(FAST);
-  } 
-  else {
+    ps4.setRumble(FAST);
+  } else {
     ps4.setRumble(STOP);
   }
 }
