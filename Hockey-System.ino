@@ -9,9 +9,9 @@ void HockeySystem()
     // flap
     r_trigger = map(ps4.Button(R2T), 0, 255, -100, 100);
 
-    if (digitalRead(A0) == 1) {
+    if (digitalRead(A0) == 0) {
         exc.setMotorPower(3, 2, 125);
-        Serial.println("read a0 ture");
+        Serial.println("read a0 true");
     }
     else {
         exc.setMotorPower(3, 2, r_trigger);
