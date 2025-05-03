@@ -38,14 +38,21 @@ void DriveSystem()
   lf_val = constrain(JOY_LY + JOY_LX + JOY_RX, -range, range);
   rf_val = constrain(JOY_LY - JOY_LX - JOY_RX, -range, range);
   lb_val = constrain(JOY_LY - JOY_LX + JOY_RX, -range, range);
-  rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);
+  rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);2szd cx`  
+
+  /*
+  2, 2 br
+  fr: 1, 2
+
+  
+  */
 
   if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY > 0) {  // forwards
     exc.setMotorPower(1, 1, JOY_LY); // fl
-    exc.setMotorPower(2, 1, JOY_LY); // fr
+    exc.setMotorPower(1, 2, JOY_LY); // fr
   }
   else if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY < 0) {  // backwards
-    exc.setMotorPower(1, 2, JOY_LY); // bl
+    exc.setMotorPower(2, 1, JOY_LY); // bl
     exc.setMotorPower(2, 2, JOY_LY); // br
   }
   else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX < 0) { // left
