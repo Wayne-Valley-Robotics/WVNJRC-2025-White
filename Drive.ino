@@ -26,6 +26,7 @@ void DriveSystem()
 
   // prizm.setMotorPower(1, 50);
 
+
   JOY_LX = map(ps4.Stick(LX), 0, 255, -100, 100);
   JOY_LY = map(ps4.Stick(LY), 0, 255, -100, 100);
 
@@ -38,16 +39,20 @@ void DriveSystem()
   rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);
 
   if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY > 0) {  // forwards
-    prizm.setMotorPowers(JOY_LY, JOY_LY);
+    exc.setMotorPower(1, 1, JOY_LY); // fl
+    exc.setMotorPower(2, 1, JOY_LY); // fr
   }
   else if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY < 0) {  // backwards
-    prizm.setMotorPowers(JOY_LY, JOY_LY);
+    exc.setMotorPower(1, 2, JOY_LY); // bl
+    exc.setMotorPower(2, 2, JOY_LY); // br
   }
   else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX < 0) { // left
-    prizm.setMotorPowers(-JOY_LX, JOY_LY);
+    exc.setMotorPower(1, 2, -JOY_LY);
+    exc.setMotorPower(2, 1, JOY_LY);
   }
   else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX > 0) { // left
-    prizm.setMotorPowers(JOY_LX, -JOY_LY);
+    exc.setMotorPower(1, 1, -JOY_LY);
+    exc.setMotorPower(2, 2, -JOY_LY);
   }
 
 //   exc.setMotorPower(1, 1, lf_val);
