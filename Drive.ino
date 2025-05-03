@@ -32,36 +32,42 @@ void DriveSystem()
   // i dont want to redo this
 
   JOY_LX = map(ps4.Stick(LX), 0, 255, -100, 100);
+  JOY_LX = JOY_LX * (abs(JOY_LX) > deadzone);
   JOY_LY = map(ps4.Stick(LY), 0, 255, -100, 100);
+  JOY_LX = JOY_LY * (abs(JOY_LY) > deadzone);
 
   JOY_RX = map(ps4.Stick(RX), 0, 255, -100, 100);
+  JOY_RX = JOY_RX * (abs(JOY_RX) > deadzone);
   JOY_RY = map(ps4.Stick(RY), 0, 255, -100, 100);
+  JOY_RY = JOY_RY * (abs(JOY_RY) > deadzone);
 
   lf_val = constrain(JOY_LY + JOY_LX + JOY_RX, -range, range);
+  lf_val = lf_val * (abs(lf_val) > deadzone);
   rf_val = constrain(JOY_LY - JOY_LX - JOY_RX, -range, range);
+  rf_val = rf_val * (abs(rf_val) > deadzone);
   lb_val = constrain(JOY_LY - JOY_LX + JOY_RX, -range, range);
-  rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);  
+  lb_val = lb_val * (abs(lb_val) > deadzone);
+  rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range); 
+  rb_val = rb_val * (abs(rb_val) > deadzone); 
 
   /*
   2, 2 br
   fr: 1, 2
-
-  
   */
 
-  if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY > deadzone) {  // forwards
+  if (abs(JOY_LY) >= abs(JOY_LX)) {  // forwards
     exc.setMotorPower(1, 1, JOY_LY); // fl
     exc.setMotorPower(1, 2, JOY_LY); // fr
   }
-  else if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY < -deadzone) {  // backwards
+  else if (abs(JOY_LY) >= abs(JOY_LX)) {  // backwards
     exc.setMotorPower(2, 1, JOY_LY); // bl
     exc.setMotorPower(2, 2, JOY_LY); // br
   }
-  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX < -deadzone) { // left
+  else if (abs(JOY_LX) >= abs(JOY_LY)) { // left
     exc.setMotorPower(1, 2, -JOY_LY);
     exc.setMotorPower(2, 1, JOY_LY);
   }
-  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX > deadzone) { // reverse left
+  else if (abs(JOY_LX) >= abs(JOY_LY)) { // reverse left
     exc.setMotorPower(1, 1, -JOY_LY);
     exc.setMotorPower(2, 2, -JOY_LY);
   }
@@ -77,8 +83,11 @@ void DriveSystem()
 //   exc.setMotorPower(1, 2, rf_val);
 //   exc.setMotorPower(2, 2, rb_val);
 
-  prizm.setMotorPower(1, lf_val);
-  prizm.setMotorPower(2, rf_val);
-  prizm.setMotorPower(1, lb_val);
-  prizm.setMotorPower(2, rb_val);
+
+  if (abs(JOY_RY) > deadzone || abs(JOY_RX) > deadzone) {
+    prizm.setMotorPower(1, lf_val);
+    prizm.setMotorPower(2, rf_val);
+    prizm.setMotorPower(1, lb_val);
+    prizm.setMotorPower(2, rb_val);
+  }
 }
