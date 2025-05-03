@@ -15,6 +15,8 @@ int rf_val;
 int lb_val;
 int rb_val;
 
+int deadzone = 10; // bruh
+
 byte range = 100;
 
 
@@ -47,21 +49,27 @@ void DriveSystem()
   
   */
 
-  if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY > 0) {  // forwards
+  if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY > deadzone) {  // forwards
     exc.setMotorPower(1, 1, JOY_LY); // fl
     exc.setMotorPower(1, 2, JOY_LY); // fr
   }
-  else if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY < 0) {  // backwards
+  else if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY < -deadzone) {  // backwards
     exc.setMotorPower(2, 1, JOY_LY); // bl
     exc.setMotorPower(2, 2, JOY_LY); // br
   }
-  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX < 0) { // left
+  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX < -deadzone) { // left
     exc.setMotorPower(1, 2, -JOY_LY);
     exc.setMotorPower(2, 1, JOY_LY);
   }
-  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX > 0) { // reverse left
+  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX > deadzone) { // reverse left
     exc.setMotorPower(1, 1, -JOY_LY);
     exc.setMotorPower(2, 2, -JOY_LY);
+  }
+  else {
+    exc.setMotorPower(1, 1, 0); // fl
+    exc.setMotorPower(1, 2, 0); // fr
+    exc.setMotorPower(2, 1, 0); // bl
+    exc.setMotorPower(2, 2, 0); // br
   }
 
 //   exc.setMotorPower(1, 1, lf_val);
