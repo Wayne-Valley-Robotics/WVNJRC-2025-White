@@ -1,4 +1,8 @@
 int r_trigger;
+
+byte flap_pin = 3;
+byte servo_pin = 4;
+
 prizm.setServoSpeed(4, 100);
 
 void HockeySystem()
@@ -7,18 +11,18 @@ void HockeySystem()
     r_trigger = map(ps4.Button(R2T), 0, 255, -100, 100);
 
     if (digitalRead(A0) == 1) {
-        prizm.setMotorPower(3, 125);
+        exc.setMotorPower(3, 2, 125);
     }
     else {
-        prizm.setMotorPower(3, r_trigger);
+        prizm.setMotorPower(3, 2, r_trigger);
     }
 
     // push thing (servo)
     if (ps4.Button(TRIANGLE) == 1) {
-        prizm.setServoPosition(4, 90);
+        prizm.setServoPosition(servo_pin, 90);
     }
     else {
-        prizm.setServoPosition(4, 0);
+        prizm.setServoPosition(servo_pin, 0);
     }
 
 }
