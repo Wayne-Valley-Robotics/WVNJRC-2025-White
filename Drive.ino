@@ -48,8 +48,8 @@ void DriveSystem()
   2, 2 br
   fr: 1, 2
   */
-  exc.setMotorPower(1, 1, lf_val);
-  exc.setMotorPower(2, 1, lb_val);
+  exc.setMotorPower(1, 1, -lf_val);
+  exc.setMotorPower(2, 1, -lb_val);
   exc.setMotorPower(1, 2, rf_val);
   exc.setMotorPower(2, 2, rb_val);
 }
