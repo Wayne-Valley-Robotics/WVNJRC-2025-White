@@ -32,10 +32,10 @@ void DriveSystem()
   JOY_RX = map(ps4.Stick(RX), 0, 255, -100, 100);
   JOY_RY = map(ps4.Stick(RY), 0, 255, -100, 100);
 
-  int lf_val = constrain(JOY_LY + JOY_LX + JOY_RX, -range, range);
-  int rf_val = constrain(JOY_LY - JOY_LX - JOY_RX, -range, range);
-  int lb_val = constrain(JOY_LY - JOY_LX + JOY_RX, -range, range);
-  int rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);
+  lf_val = constrain(JOY_LY + JOY_LX + JOY_RX, -range, range);
+  rf_val = constrain(JOY_LY - JOY_LX - JOY_RX, -range, range);
+  lb_val = constrain(JOY_LY - JOY_LX + JOY_RX, -range, range);
+  rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);
 
   if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY > 0) {  // forwards
     prizm.setMotorPowers(JOY_LY, JOY_LY);
@@ -50,11 +50,15 @@ void DriveSystem()
     prizm.setMotorPowers(JOY_LX, -JOY_LY);
   }
 
-  exc.setMotorPower(1, 1, lf_val);
-  exc.setMotorPower(2, 1, lb_val);
-  exc.setMotorPower(1, 2, rf_val);
-  exc.setMotorPower(2, 2, rb_val);
-  
+//   exc.setMotorPower(1, 1, lf_val);
+//   exc.setMotorPower(2, 1, lb_val);
+//   exc.setMotorPower(1, 2, rf_val);
+//   exc.setMotorPower(2, 2, rb_val);
+
+  prizm.setMotorPower(1, lf_val);
+  prizm.setMotorPower(2, rf_val);
+  prizm.setMotorPower(1, lb_val);
+  prizm.setMotorPower(2, rb_val);
 
 
   if (ps4.Button(TRIANGLE) == 1) {
@@ -69,6 +73,8 @@ void DriveSystem()
   else if (ps4.Button(SQUARE) == 1) {
 
   }
+
+
 
   
 
