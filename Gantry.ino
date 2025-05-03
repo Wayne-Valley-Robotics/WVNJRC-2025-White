@@ -1,5 +1,9 @@
 void GantrySystem() {
+<<<<<<< Updated upstream
   int S_T = A0;
+=======
+  int S_T = A1;
+>>>>>>> Stashed changes
   int M_S = 40;
   int S_B = A1;
 
@@ -62,3 +66,9 @@ left better not move anywhere except left
     prizm.setMotorPower(2, 125);
   }
 }
+<<<<<<< Updated upstream
+=======
+/* 
+ *  Finally!!!!!!!!
+ */
+>>>>>>> Stashed changes
