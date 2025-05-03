@@ -22,7 +22,7 @@ void HockeySystem()
     prizm.setServoSpeed(4, 100);
 
     if (ps4.Button(TRIANGLE) == 1) {
-        prizm.setServoPosition(servo_pin, 105);
+        prizm.setServoPosition(servo_pin, 120);
         Serial.println("read triangle button true");
     }
     else {
