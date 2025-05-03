@@ -26,6 +26,8 @@ void DriveSystem()
 
   // prizm.setMotorPower(1, 50);
 
+  // plz work
+  // i dont want to redo this
 
   JOY_LX = map(ps4.Stick(LX), 0, 255, -100, 100);
   JOY_LY = map(ps4.Stick(LY), 0, 255, -100, 100);
@@ -50,7 +52,7 @@ void DriveSystem()
     exc.setMotorPower(1, 2, -JOY_LY);
     exc.setMotorPower(2, 1, JOY_LY);
   }
-  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX > 0) { // left
+  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX > 0) { // reverse left
     exc.setMotorPower(1, 1, -JOY_LY);
     exc.setMotorPower(2, 2, -JOY_LY);
   }
