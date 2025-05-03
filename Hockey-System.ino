@@ -13,7 +13,7 @@ void HockeySystem()
         exc.setMotorPower(3, 2, 125);
     }
     else {
-        prizm.setMotorPower(3, 2, r_trigger);
+        exc.setMotorPower(3, 2, r_trigger);
     }
 
     // push thing (servo)
