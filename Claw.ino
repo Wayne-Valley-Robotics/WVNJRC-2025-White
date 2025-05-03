@@ -1,0 +1,15 @@
+void Claw() {
+  //claw open = O;
+  //claw close = C;
+  int S = 1;
+  prizm.setServoSpeed(S, 70);
+
+  if (ps4.Button(L2T)) {
+    if (prizm.readServoPosition(S)== (O)){
+    prizm.setServoPosition(S, C);
+    }
+    else if (prizm.readServoPosition(S)==(C)){
+    prizm.setServoPosition(S, O);
+    
+  }
+}
