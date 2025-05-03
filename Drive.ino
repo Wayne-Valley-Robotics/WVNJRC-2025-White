@@ -38,7 +38,7 @@ void DriveSystem()
   lf_val = constrain(JOY_LY + JOY_LX + JOY_RX, -range, range);
   rf_val = constrain(JOY_LY - JOY_LX - JOY_RX, -range, range);
   lb_val = constrain(JOY_LY - JOY_LX + JOY_RX, -range, range);
-  rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);2szd cx`  
+  rb_val = constrain(JOY_LY + JOY_LX - JOY_RX, -range, range);  
 
   /*
   2, 2 br
