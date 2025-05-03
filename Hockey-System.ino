@@ -11,9 +11,11 @@ void HockeySystem()
 
     if (digitalRead(A0) == 1) {
         exc.setMotorPower(3, 2, 125);
+        Serial.println("read a0 ture");
     }
     else {
         exc.setMotorPower(3, 2, r_trigger);
+        Serial.println("read a0 false");
     }
 
     // push thing (servo)
@@ -21,9 +23,11 @@ void HockeySystem()
 
     if (ps4.Button(TRIANGLE) == 1) {
         prizm.setServoPosition(servo_pin, 90);
+        Serial.println("read triangle button true");
     }
     else {
         prizm.setServoPosition(servo_pin, 0);
+        Serial.println("else triangle");
     }
 
 }
