@@ -9,7 +9,7 @@ void HockeySystem()
     // flap
     r_trigger = map(ps4.Button(R2T), 0, 255, -100, 100);
 
-    if (digitalRead(A2) == 0) {
+    if (digitalRead(A0) == 0) {
         exc.setMotorPower(3, 2, 125);
         Serial.print("brake flap");
     }
@@ -22,7 +22,7 @@ void HockeySystem()
     prizm.setServoSpeed(4, 100);
 
     if (ps4.Button(TRIANGLE) == 1) {
-        prizm.setServoPosition(servo_pin, 120);
+        prizm.setServoPosition(servo_pin, 115);
         Serial.println("read triangle button true");
     }
     else {
