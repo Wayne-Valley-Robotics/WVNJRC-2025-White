@@ -64,23 +64,4 @@ void DriveSystem()
   prizm.setMotorPower(2, rf_val);
   prizm.setMotorPower(1, lb_val);
   prizm.setMotorPower(2, rb_val);
-
-
-  if (ps4.Button(TRIANGLE) == 1) {
-
-  }
-  else if (ps4.Button(CIRCLE) == 1) {
-
-  }
-  else if (ps4.Button(CROSS) == 1) {
-
-  }
-  else if (ps4.Button(SQUARE) == 1) {
-
-  }
-
-
-
-  
-
 }
