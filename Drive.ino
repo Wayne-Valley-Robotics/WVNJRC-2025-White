@@ -34,7 +34,7 @@ void DriveSystem()
   JOY_LX = map(ps4.Stick(LX), 0, 255, -100, 100);
   JOY_LX = JOY_LX * (abs(JOY_LX) > deadzone);
   JOY_LY = map(ps4.Stick(LY), 0, 255, -100, 100);
-  JOY_LX = JOY_LY * (abs(JOY_LY) > deadzone);
+  JOY_LY = JOY_LY * (abs(JOY_LY) > deadzone);
 
   JOY_RX = map(ps4.Stick(RX), 0, 255, -100, 100);
   JOY_RX = JOY_RX * (abs(JOY_RX) > deadzone);
@@ -55,21 +55,21 @@ void DriveSystem()
   fr: 1, 2
   */
 
-  if (abs(JOY_LY) >= abs(JOY_LX)) {  // forwards
+  if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY > 0) {  // forwards
     exc.setMotorPower(1, 1, JOY_LY); // fl
     exc.setMotorPower(1, 2, JOY_LY); // fr
   }
-  else if (abs(JOY_LY) >= abs(JOY_LX)) {  // backwards
+  else if (abs(JOY_LY) >= abs(JOY_LX) && JOY_LY < 0) {  // backwards
     exc.setMotorPower(2, 1, JOY_LY); // bl
     exc.setMotorPower(2, 2, JOY_LY); // br
   }
-  else if (abs(JOY_LX) >= abs(JOY_LY)) { // left
-    exc.setMotorPower(1, 2, -JOY_LY);
-    exc.setMotorPower(2, 1, JOY_LY);
+  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX < 0) { // left
+    exc.setMotorPower(1, 2, -JOY_LX);
+    exc.setMotorPower(2, 1, JOY_LX);
   }
-  else if (abs(JOY_LX) >= abs(JOY_LY)) { // reverse left
-    exc.setMotorPower(1, 1, -JOY_LY);
-    exc.setMotorPower(2, 2, -JOY_LY);
+  else if (abs(JOY_LX) >= abs(JOY_LY) && JOY_LX > 0) { // reverse left
+    exc.setMotorPower(1, 1, -JOY_LX);
+    exc.setMotorPower(2, 2, -JOY_LX);
   }
   else {
     exc.setMotorPower(1, 1, 0); // fl
