@@ -21,4 +21,5 @@ void loop() {
   ps4.getPS4();  // poll teleop for ps4 button inputs
 
   DriveSystem();  // primary drive controls
+  HockeySystem();
 }
