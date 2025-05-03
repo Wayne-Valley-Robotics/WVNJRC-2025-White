@@ -3,7 +3,6 @@ int r_trigger;
 byte flap_pin = 3;
 byte servo_pin = 4;
 
-prizm.setServoSpeed(4, 100);
 
 void HockeySystem()
 {
@@ -18,6 +17,8 @@ void HockeySystem()
     }
 
     // push thing (servo)
+    prizm.setServoSpeed(4, 100);
+
     if (ps4.Button(TRIANGLE) == 1) {
         prizm.setServoPosition(servo_pin, 90);
     }
