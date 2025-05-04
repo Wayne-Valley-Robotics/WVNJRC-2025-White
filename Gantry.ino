@@ -20,12 +20,12 @@ void GantrySystem() {
   }
   
   // now the hard part, two consecutive ha ha ha :,)
-  // up up and away!!!
 
   /* the two vertical motors DO NOT USE EXC they use PRIZM 
   Motor 1: smaller vertical one
   Motor 2: main one (bigger) */
 
+  // up up and away!!!
   if ((ps4.Button(UP)) && (!digitalRead(top_sensor))) {  // no switch
     prizm.setMotorPower(1, motor_speed);
   }
