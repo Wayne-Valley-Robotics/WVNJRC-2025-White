@@ -1,63 +1,52 @@
 void GantrySystem() {
-  int S_T = A0;
-  int M_S = 40;
-  int S_B = A1;
+  int top_sensor = A1; // top sensor
+  int motor_speed = 40; // motor speed
+  int bottom_sensor = A2; // bottom
 
- /* 
- right is right, NOT LEFT
-  */
-  
+  // right is right, NOT LEFT
   if (ps4.Button(RIGHT)) {
-    exc.setMotorPower(3, 1, M_S);
+    exc.setMotorPower(3, 1, motor_speed);
   }
   else {
     exc.setMotorPower(3, 1, 125);
   }
   
-  /*
-left better not move anywhere except left
-  */
- if (ps4.Button(LEFT)) {
-    exc.setMotorPower(3, 1, -M_S);
+  // left better not move anywhere except left
+  if (ps4.Button(LEFT)) {
+    exc.setMotorPower(3, 1, -motor_speed);
   }
   else {
     exc.setMotorPower(3, 1, 125);
   }
   
-  /*
- now the hard part, two consecutive ha ha ha :,)
-   */
-  /*
- up up and away!!!
-   */
-// no switch
- if ((ps4.Button(UP))&&(!digitalRead(S_T))) {
-    prizm.setMotorPower(1, M_S);
+  // now the hard part, two consecutive ha ha ha :,)
+  // up up and away!!!
+
+  /* the two vertical motors DO NOT USE EXC they use PRIZM 
+  Motor 1: smaller vertical one
+  Motor 2: main one (bigger) */
+
+  if ((ps4.Button(UP)) && (!digitalRead(top_sensor))) {  // no switch
+    prizm.setMotorPower(1, motor_speed);
   }
-//with switch
-  else if ((ps4.Button(UP))&&(digitalRead(S_T))){
-    prizm.setMotorPower(2, M_S);
+  else if ((ps4.Button(UP)) && (digitalRead(top_sensor))) { // with switch
+    prizm.setMotorPower(2, motor_speed);
     prizm.setMotorPower(1, 125);
   }
- //stop
-  else {
+  else { // stop
     prizm.setMotorPower(1, 125);
     prizm.setMotorPower(2, 125);
   }
-  /*
- down time is frown time :(
-   */
-  // no switch
- if ((ps4.Button(DOWN))&&(!digitalRead(S_B))) {
-    prizm.setMotorPower(1, -M_S);
+
+  // down time is frown time :(
+  if ((ps4.Button(DOWN)) && (!digitalRead(bottom_sensor))) {  // no switch
+    prizm.setMotorPower(1, -motor_speed);
   }
-//with switch
-  else if ((ps4.Button(DOWN))&&(digitalRead(S_B))){
-    prizm.setMotorPower(2, -M_S);
+  else if ((ps4.Button(DOWN)) && (digitalRead(bottom_sensor))){ //with switch
+    prizm.setMotorPower(2, -motor_speed);
     prizm.setMotorPower(1, 125);
   }
- //stop
-  else {
+  else { //stop
     prizm.setMotorPower(1, 125);
     prizm.setMotorPower(2, 125);
   }
