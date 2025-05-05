@@ -1,27 +1,28 @@
 int r_trigger;
 
 byte flap_pin = 3;
-byte servo_pin = 4;
+byte servo_pin = 2;
 
+int deadzone = 25;
+bool input;
 
 void HockeySystem()
 {
-    // flap
-    r_trigger = map(ps4.Button(R2T), 0, 255, -100, 100);
-
-    if (digitalRead(A0) == 0) {
-        exc.setMotorPower(3, 2, 125);
-        Serial.println("brake flap");
+    // flippy floppy
+    if (ps4.Button(SQUARE)) {
+      exc.setMotorPower(3, 2, 15);
+    }
+    else if (ps4.Button(CROSS)) {
+      exc.setMotorPower(3, 2, -15);
     }
     else {
-        exc.setMotorPower(3, 2, r_trigger);
-        Serial.println("flap moving");
+      exc.setMotorPower(3, 2, 125);
     }
 
     // push thing (servo)
     prizm.setServoSpeed(4, 100);
 
-    if (ps4.Button(TRIANGLE) == 1) {
+    if (ps4.Button(CIRCLE) == 1) {
         prizm.setServoPosition(servo_pin, 113);
     }
     else {
