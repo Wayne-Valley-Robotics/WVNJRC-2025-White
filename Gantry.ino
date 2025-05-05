@@ -1,21 +1,54 @@
 void GantrySystem() {
-  int S_B = A0;
-  // insert limit switch 2 variable name
-  //insert limit switch 3 variable name
-  /*
-if limit switch pressed, set position 0
-if limit switch not pressed, move up
+  int motor_speed = 60; // motor speed
 
-  */
-  if (digitalRead(S_B)) {
+ // right is right, NOT LEFT
+  if (ps4.Button(LEFT)) {
+    exc.setMotorPower(3, 1, motor_speed);
     prizm.setMotorPower(1, 125);
+    prizm.setMotorPower(2, 125);
   }
-  else {
-    prizm.setMotorPower(1, 40);
-  }
-  /*
-make front up and down move before back
-precison is key :)
-  */
 
+// left better not move anywhere except left
+  else if (ps4.Button(RIGHT)) {
+    exc.setMotorPower(3, 1, -motor_speed);
+    prizm.setMotorPower(1, 125);
+    prizm.setMotorPower(2, 125);
+  }
+
+// now the hard part, two consecutive ha ha ha :,)
+
+/* the two vertical motors DO NOT USE EXC they use PRIZM 
+  Motor 1: smaller vertical one
+  Motor 2: main one (bigger) */
+
+  // up up and away!!!
+  else if (ps4.Button(UP)) { // front up
+      exc.setMotorPower(3, 1, 125);
+      prizm.setMotorPower(1, motor_speed);
+      prizm.setMotorPower(2, 125);
+    }
+  else if (ps4.Button(L1)){ // back up
+      exc.setMotorPower(3, 1, 125);
+      prizm.setMotorPower(1, 125);
+      prizm.setMotorPower(2, motor_speed);
+    }
+  
+
+  else if (ps4.Button(DOWN)) { // front down
+      exc.setMotorPower(3, 1, 125);
+      prizm.setMotorPower(1, -motor_speed);
+      prizm.setMotorPower(2, 125);
+    }
+  else if (ps4.Button(R1)) { // back down
+      exc.setMotorPower(3, 1, 125);
+      prizm.setMotorPower(1, 125);
+      prizm.setMotorPower(2, -motor_speed);
+    }
+  
+
+  else { // stop
+    exc.setMotorPower(3, 1, 125);
+    prizm.setMotorPower(1, 125);
+    prizm.setMotorPower(2, 125);
+  }
 }
