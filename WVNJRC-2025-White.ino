@@ -22,4 +22,5 @@ void loop() {
   DriveSystem();  // primary drive controls
   HockeySystem();
   GantrySystem();
+  Claw();
 }
