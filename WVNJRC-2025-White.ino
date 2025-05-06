@@ -17,9 +17,10 @@ void setup() {
 }
 
 void loop() {
-
-
   ps4.getPS4();  // poll teleop for ps4 button inputs
+  Connectivity();
+  DriveSystem();  // primary drive controls
+  HockeySystem();
+  GantrySystem();
   Claw();
-  //DriveSystem();  // primary drive controls
 }
