@@ -3,7 +3,6 @@ int r_trigger;
 byte flap_pin = 3;
 byte servo_pin = 2;
 
-int deadzone = 25;
 bool input;
 
 void HockeySystem()

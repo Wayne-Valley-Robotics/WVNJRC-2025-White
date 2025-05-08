@@ -15,7 +15,7 @@ int rf_val;
 int lb_val;
 int rb_val;
 
-int deadzone = 10; // bruh
+int deadzone = 15; // bruh
 
 byte range = 100;
 
